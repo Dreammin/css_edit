@@ -1,0 +1,383 @@
+
+html, body{ 
+	height:100%; 
+}
+.main{
+	width: 100%;
+	height: 100%;
+}
+.moveContainer{
+	width: 60%;
+	height: 100%;
+	float: left;
+	background-color: #369;
+	overflow: hidden;
+}
+
+.editContainer{
+	width:40%;
+	height: 100%;
+	float: right;
+	background-color: #353535;
+	color:#ddd;
+	overflow-y:scroll;
+} 
+
+.contentContainer{
+	width: 90%;
+	margin:10px auto;
+}
+
+.moveBox{
+	width: 80px;
+	height: 80px;
+	border-radius:5px;
+	background-color:#34dd56;
+	/* margin:20px; */
+	
+}
+.coordinate-plane {
+	width: 240px;
+	height: 240px;
+	position: relative;
+}
+#P3 {
+	left: 20px;
+	top: 220px;
+}
+#P0 {
+	left: 220px;
+	top: 20px;
+}
+#P0, #P3 {
+	background: #fff;
+}
+.control-point {
+	position: absolute;
+	z-index: 1;
+	height: 20px;
+	width: 20px;
+	border: 1px solid rgba(0,0,0,.3);
+	margin: -10px 0 0 -10px;
+	outline: none;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+canvas{
+	margin:20px;
+}
+input[type="range"] {
+
+	border-radius: 20px;
+
+}
+
+.propertyBox:after {
+	content:"";
+	display: block;
+	clear: both;
+} 
+
+.propertyBox{
+	width: 75%;
+	float: right;
+	margin-top: -36px;
+}
+.property{
+	float: left;
+
+}
+
+.property span{
+	float: left;
+	line-height: 1.75em;
+}
+input[type=number] {
+	width: 3.2em;
+
+
+}
+input[type=number],input[type=range]{
+	background: #555;
+	border: 0;
+	border-radius: 2px;
+	color: #ddd;
+	padding: 4px;
+	margin-left: 5px;
+}
+#exportCss{
+	width: 100%;
+	height: 250px;
+}
+
+#code{
+	overflow-x: scroll;
+	background-color: rgb(47, 38, 38);
+	margin-top: 10px;
+}
+
+.selectFunction {
+	height:250px;
+}
+
+.selectFunction .coordinate-plane{
+	float:left;
+}
+
+.selectFunction ul{
+	float:left;
+	margin-top: 20px;
+}
+
+.selectFunction ul>li{
+	margin-bottom: 5px;
+}
+
+#cubic{
+	display: inline-block;
+}
+
+.box{
+	margin-bottom: 10px;
+}
+
+.box > label{
+	font-weight: bold;
+	color:#fff;
+}
+
+.property{
+	margin-top:5px;
+}
+
+.moveView{
+	width: 100%;
+	height: 100%; 
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-perspective:1000px;
+	-moz-perspective:1000px;
+	-ms-perspective:1000px;
+	-o-perspective:1000px;
+	perspective:1000px;
+
+	-webkit-perspective-origin:50% 50%;
+	-moz-perspective-origin:50% 50%;
+	-ms-perspective-origin:50% 50%;
+	-o-perspective-origin:50% 50%;
+	perspective-origin:50% 50%;
+
+}
+.box3D{
+	width: 100px;
+	height: 100px;
+	padding: 100px;
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-perspective:1000px;
+	-moz-perspective:1000px;
+	-ms-perspective:1000px;
+	-o-perspective:1000px;
+	perspective:1000px;
+
+	-webkit-perspective-origin:50% 50%;
+	-moz-perspective-origin:50% 50%;
+	-ms-perspective-origin:50% 50%;
+	-o-perspective-origin:50% 50%;
+	perspective-origin:50% 50%;
+
+} 
+
+
+.box3D div{
+	width: 100px;
+	height: 100px;
+	background: rgba(255, 255, 255, 0);
+	line-height: 100px;
+	font-size: 36px;
+	font-weight: 500;
+	text-align: center;
+	border:1px solid #fff; 
+	opacity:0.5;
+	position: absolute;
+	color: #FDFDFD;
+	font-weight: bold;
+}
+
+
+#page2{
+	-webkit-transform-origin: right;
+	-moz-transform-origin: right;
+	-ms-transform-origin: right;
+	-o-transform-origin: right;
+	transform-origin: right;
+	-webkit-transform: rotateY(90deg);
+	-ms-transform: rotateY(90deg);
+	-o-transform: rotateY(90deg);
+	transform: rotateY(90deg);
+}
+
+#page3{
+	-webkit-transform-origin: bottom;
+	-moz-transform-origin: bottom;
+	-ms-transform-origin: bottom;
+	-o-transform-origin: bottom;
+	transform-origin: bottom;
+	-webkit-transform: translateZ(100px);
+	-ms-transform: translateZ(100px);
+	-o-transform: translateZ(100px);
+	transform: translateZ(100px); 
+}
+
+#page4{
+	-webkit-transform-origin: left;
+	-moz-transform-origin: left;
+	-ms-transform-origin: left;
+	-o-transform-origin: left;
+	transform-origin: left;
+	-webkit-transform: rotateY(-90deg);
+	-ms-transform: rotateY(-90deg);
+	-o-transform: rotateY(-90deg);
+	transform: rotateY(-90deg);
+}
+
+#page5{
+	-webkit-transform-origin: top;
+	-moz-transform-origin: top;
+	-ms-transform-origin: top;
+	-o-transform-origin: top;
+	transform-origin: top;
+	-webkit-transform: rotateX(90deg);
+	-ms-transform: rotateX(90deg);
+	-o-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+}
+
+#page6{
+	-webkit-transform-origin: bottom;
+	-moz-transform-origin: bottom;
+	-ms-transform-origin: bottom;
+	-o-transform-origin: bottom;
+	transform-origin: bottom;
+	-webkit-transform: rotateX(-90deg);
+	-ms-transform: rotateX(-90deg);
+	-o-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+}
+.labelBox{
+
+	width: 25%;
+	padding: 6px 0px;
+}
+header h1{
+	color: #fff;
+	font-size: 24px;
+	padding: 10px 30px;
+}
+
+.editContainer header {
+	background-color: #000;
+}
+
+.moveContainer header {
+	background-color: #204871;
+}
+
+#run{
+	width: 60px;
+	height: 40px;
+	position: absolute;
+	bottom:0;
+	right:40%;
+	margin: 5px 10px;
+	color: #fff;
+	-webkit-animation:myfirst 0.5s linear 0s infinite alternate;
+	-moz-animation:myfirst 0.5s linear 0s infinite alternate;
+	-o-animation:myfirst 0.5s linear 0s infinite alternate;
+	-ms-animation:myfirst 0.5s linear 0s infinite alternate;
+	animation:myfirst 0.5s linear 0s infinite alternate;
+}
+
+
+#run:hover,
+#run:disabled{
+	-webkit-animation-play-state:paused;
+	-moz-animation-play-state:paused;
+	-o-animation-play-state:paused;
+	-ms-animation-play-state:paused;
+	animation-play-state:paused;
+}
+
+.btn-danger:hover, 
+.btn-danger:active, 
+.btn-danger:focus {
+	background-color: #f4543c;
+	cursor: pointer;
+}
+
+.btn:disabled:hover {
+	cursor: default;
+}
+
+.btn-danger,.btn:disabled:hover {
+	border-radius: 3px;
+	box-shadow: none;
+	border: 1px solid #f4543c;
+	background-color: #f56954;
+}
+
+@keyframes myfirst
+{
+	0%   {bottom:0px;}
+	25%  {bottom:20px;}
+	50%  {bottom:25px;}
+	75%  {bottom:30px;}
+	100% {bottom:35px;}
+}
+
+@-moz-keyframes myfirst 
+{
+	0%   {bottom:0px;}
+	25%  {bottom:20px;}
+	50%  {bottom:25px;}
+	75%  {bottom:30px;}
+	100% {bottom:35px;}
+}
+
+@-webkit-keyframes myfirst 
+{
+	0%   {bottom:0px;}
+	25%  {bottom:20px;}
+	50%  {bottom:25px;}
+	75%  {bottom:30px;}
+	100% {bottom:35px;}
+}
+
+@-ms-keyframes myfirst 
+{
+	0%   {bottom:0px;}
+	25%  {bottom:20px;}
+	50%  {bottom:25px;}
+	75%  {bottom:30px;}
+	100% {bottom:35px;}
+}
+
+@-o-keyframes myfirst 
+{
+	0%   {bottom:0px;}
+	25%  {bottom:20px;}
+	50%  {bottom:25px;}
+	75%  {bottom:30px;}
+	100% {bottom:35px;}
+}
+
