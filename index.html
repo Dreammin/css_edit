@@ -30,11 +30,11 @@
 				</div>
 			</div>
 			
-			<input id="run" class="btn btn-danger" type="button" value="Go!" onclick="run();">
+			<input id="run" class="btn btn-danger" type="button" value="Go!" v-on:click="startRun">
 		</div>
 		
 		<!-- 参数设置区域 -->
-		<div class="editContainer">
+		<div id="editContainer" class="editContainer">
 			<header>
 				<h1>
 					运动参数设置
@@ -44,107 +44,56 @@
 				<div class="contentContainer">
 					<div class="runTimeBox box">
 						<label for="timeLine">运行时间：</label>
-						<input id="timeLine" type="range" min="0.1" max="10" step="0.1" value="1">
-						<output for="timeLine" id="timeValue"></output>
+						<input id="timeLine" type="range" min="0.1" max="10" step="0.1" value="1" v-model="runTime">
+						<output for="timeLine" id="timeValue">{{runTime}}s</output>
 					</div>
 					<div class="timeFunctionBox box">
 						<label>速度曲线：</label>
-						<pre id="cubic">code</pre>
+						<pre id="cubic">{{cubicStr}}</pre>
 						<div class="selectFunction">
-
+					
 							<div id="coordinate-plane" class="coordinate-plane"> 
 								<span class="control-point" id="P0"></span> 
 								<span class="control-point" id="P3"></span>
 								<canvas id="canvas" height="200" width="200" class="bezier" style="background-color:#555;"></canvas>
 							</div>
 							<ul>
-								<li>
-									<input type="radio" name="timeFunction" value="custom" id="timeFunction1"  checked="checked">自定义
-
+								<li v-for="timeFunction in timeFunctionArr">
+									<input type="radio" v-model="timeFunctionModel" :value="timeFunction.name">{{timeFunction.name}}
 								</li>
-								<li>
-									<input type="radio" name="timeFunction" value="ease" id="timeFunction2">ease
-								</li>
-								<li>
-									<input type="radio" name="timeFunction" value="linear" id="timeFunction3">linear
-								</li>
-								<li>
-									<input type="radio" name="timeFunction" value="ease-in" id="timeFunction4">ease-in
-								</li>
-								<li>
-									<input type="radio" name="timeFunction" value="ease-out" id="timeFunction5">ease-out
-								</li>
-								<li>
-									<input type="radio" name="timeFunction" value="ease-in-out" id="timeFunction6">ease-in-out
-								</li>
-
 							</ul>
 						</div>
-
-
-
 					</div>
 					<div class="runPropertyBox box">
 						<label>动画属性：</label>
 						<ul>
-							<li id="translate3d">
+							<li v-for="propertyItem in runPropertys" :id="propertyItem.name">
 								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="translate3d" id="runProperty1" checked="checked">translate3d
+									<input type="checkbox" name="runProperty" value="translate3d" v-model="propertyItem.display">{{propertyItem.name}}
 								</div>
-								
-							</li>
-							<li id="scale3d">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="scale3d" id="runProperty2">scale3d
-								</div>
-								
-							</li>
-							<li id="skew">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="skew" id="runProperty3">skew
-								</div>
-								
-							</li>
-							<li id="rotateX">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="rotateX" id="runProperty4">rotateX
-								</div>
-								
-							</li>
-							<li id="rotateY">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="rotateY" id="runProperty5">rotateY
-								</div>
-								
-							</li>
-							<li id="rotateZ">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="rotateZ" id="runProperty6">rotateZ
-								</div>
-								
-							</li>
-							<li id="rotate3d">
-								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="rotate3d" id="runProperty6">rotate3d
-								</div>
-
+								<div id="translate3dBox" class="propertyBox" v-show="propertyItem.display">
+									<div v-for="option in propertyItem.options" class="property" :style="propertyItem.width?propertyItem.width:option.width">
+										<label>
+											<span>{{option.name}}:</span>
+											<input v-model="option.value" :step="option.step" type="number">
+										</label>
+									</div>
+								</div> 
 							</li>
 						</ul>
 
 					</div>
 					<div class="cssCodeBox box">
 						<label>css代码：</label>
-						<pre id="code">code</pre>
+						<pre id="code">{{{code}}}</pre>
 					</div>
 
 				</div>
 			</form>
 		</div>
-		
 	</div>
 
-	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-	<script type="text/javascript" src="js/css_edit.js"></script>
-
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
