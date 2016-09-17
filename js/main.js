@@ -412,7 +412,7 @@ var vm = new Vue({
 			return tempTransformStr;
 		},
 		getTransition:function(){
-			return "transform " + this.runTime + "s " + this.cubicBezier;
+			return "transform " + this.runTime + "s " + this.cubicStr;
 		},
 		getPrefixCss:function(type,value){
 			var resultStr="";
