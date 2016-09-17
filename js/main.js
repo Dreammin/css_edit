@@ -227,7 +227,7 @@ var vm = new Vue({
 			this.point = this.changeToPoint(this.cubic_bezier);
 			this.drawCanvasWithoutControl(this.canvas,this.pointStyle,this.point);
 		}
-		this.moveObject.addEventListener("transitionend", function(){ 
+		this.moveObject.addEventListener("transitionend", function(){
 			this.style.transform="translate3d(0px,0px,0px) scale3d(1,1,1) skew(0deg,0deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg) rotate3d(0,0,0,0deg)";
 			this.style.transition="transform 1ms 0.5s";
 		}, false); 
@@ -255,7 +255,7 @@ var vm = new Vue({
 			}
 		},
 		cubicStr:function(){
-			var tempCubicStr = "cubic_bezier(";
+			var tempCubicStr = "cubic-bezier(";
 			for (var i = 0; i < this.cubic_bezier.length; i++) {
 				if (i==this.cubic_bezier.length-1) {
 					tempCubicStr += this.cubic_bezier[i];
