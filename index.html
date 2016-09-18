@@ -7,6 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" type="text/css" href="css/default.css">
 	<link rel="stylesheet" type="text/css" href="css/css_edit.css">
+	<script type="text/javascript" src="js/vue.min.js" ></script>
+	
 </head>
 
 <body>
@@ -45,11 +47,11 @@
 					<div class="runTimeBox box">
 						<label for="timeLine">运行时间：</label>
 						<input id="timeLine" type="range" min="0.1" max="10" step="0.1" value="1" v-model="runTime">
-						<output for="timeLine" id="timeValue">{{runTime}}s</output>
+						<output for="timeLine" id="timeValue" v-text="runTime + 's'"><!-- {{runTime}} --></output>
 					</div>
 					<div class="timeFunctionBox box">
 						<label>速度曲线：</label>
-						<pre id="cubic">{{cubicStr}}</pre>
+						<pre id="cubic" v-text="cubicStr"></pre>
 						<div class="selectFunction">
 					
 							<div id="coordinate-plane" class="coordinate-plane"> 
@@ -59,7 +61,8 @@
 							</div>
 							<ul>
 								<li v-for="timeFunction in timeFunctionArr">
-									<input type="radio" v-model="timeFunctionModel" :value="timeFunction.name">{{timeFunction.name}}
+									<input :id="timeFunction.name" type="radio" v-model="timeFunctionModel" :value="timeFunction.name">
+									<label :for="timeFunction.name" v-text="timeFunction.name"></label>
 								</li>
 							</ul>
 						</div>
@@ -67,14 +70,15 @@
 					<div class="runPropertyBox box">
 						<label>动画属性：</label>
 						<ul>
-							<li v-for="propertyItem in runPropertys" :id="propertyItem.name">
+							<li v-for="propertyItem in runPropertys" :id="propertyItem.name + 'Box'">
 								<div class="labelBox">
-									<input type="checkbox" name="runProperty" value="translate3d" v-model="propertyItem.display">{{propertyItem.name}}
+									<input :id="propertyItem.name" type="checkbox" name="runProperty" value="translate3d" v-model="propertyItem.display">
+									<label :for="propertyItem.name" v-text="propertyItem.name"></label>
 								</div>
 								<div id="translate3dBox" class="propertyBox" v-show="propertyItem.display">
 									<div v-for="option in propertyItem.options" class="property" :style="propertyItem.width?propertyItem.width:option.width">
 										<label>
-											<span>{{option.name}}:</span>
+											<span v-text="option.name + ':'"></span>
 											<input v-model="option.value" :step="option.step" type="number">
 										</label>
 									</div>
@@ -85,7 +89,7 @@
 					</div>
 					<div class="cssCodeBox box">
 						<label>css代码：</label>
-						<pre id="code">{{{code}}}</pre>
+						<pre id="code" v-html="code"></pre>
 					</div>
 
 				</div>
@@ -93,7 +97,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/vue.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js" ></script>
 </body>
 </html>

@@ -230,6 +230,10 @@ var vm = new Vue({
 		this.moveObject.addEventListener("transitionend", function(){
 			this.style.transform="translate3d(0px,0px,0px) scale3d(1,1,1) skew(0deg,0deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg) rotate3d(0,0,0,0deg)";
 			this.style.transition="transform 1ms 0.5s";
+			setTimeout(function(){
+				document.getElementById("run").disabled=false;
+			},700);
+			
 		}, false); 
 	},
 	computed:{
@@ -273,6 +277,7 @@ var vm = new Vue({
 			this.moveObject.style.transition=this.transitionStr;
 			this.moveObject.style.webkitTransform=this.transformStr;
 			this.moveObject.style.transform=this.transformStr;
+			document.getElementById("run").disabled=true;
 		},
 		DragStart:function(e){
 			e = this.MousePos(e);
